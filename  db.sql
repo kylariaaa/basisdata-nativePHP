@@ -1,0 +1,15 @@
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('CEO','KARYAWAN') DEFAULT 'KARYAWAN'
+);
+
+CREATE TABLE absensi (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  tanggal DATE NOT NULL,
+  jam_masuk TIME NOT NULL,
+  jam_keluar TIME DEFAULT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
